@@ -21,30 +21,33 @@
 </template>
 
 <script>
+import { getFactor } from '@/api/data'
+
 export default {
   name: 'HelloWorld',
   props: {
     msg: String
   },
   mounted(){
-  this.getEchartData()  
+      getFactor("factor_index_quote_close", "000001.SH", "2021-11-01", "2021-12-01").then(this.getEchartData)
   },
   methods: {
-  getEchartData() {
+  getEchartData(index_quote) {
     const chart = this.$refs.chart
+    
     if (chart) {
       const myChart = this.$echarts.init(chart)
       const option = {
               xAxis: {
                 type: 'category',
-                data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+                data: index_quote.data["000001.SH"].date
               },
               yAxis: {
                 type: 'value'
               },
               series: [
                 {
-                  data: [820, 932, 901, 934, 1290, 1330, 1320],
+                  data: index_quote.data["000001.SH"].value,
                   type: 'line',
                   smooth: true
                 }
@@ -55,7 +58,7 @@ export default {
         myChart.resize()
       })
     }
-      this.$on('hook:destroyed',()=>{
+    this.$on('hook:destroyed',()=>{
         window.removeEventListener("resize", function() {
         myChart.resize();
       });
