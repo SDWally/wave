@@ -29,41 +29,47 @@ export default {
     msg: String
   },
   mounted(){
-      getFactor("factor_index_quote_close", "000001.SH", "2021-11-01", "2021-12-01").then(this.getEchartData)
+    this.get_start_and_end();
+    getFactor("factor_index_quote_close", "000001.SH", "2021-11-01", "2021-12-01").then(this.getEchartData)
   },
   methods: {
-  getEchartData(index_quote) {
-    const chart = this.$refs.chart
-    
-    if (chart) {
-      const myChart = this.$echarts.init(chart)
-      const option = {
-              xAxis: {
-                type: 'category',
-                data: index_quote.data["000001.SH"].date
-              },
-              yAxis: {
-                type: 'value'
-              },
-              series: [
-                {
-                  data: index_quote.data["000001.SH"].value,
-                  type: 'line',
-                  smooth: true
-                }
-              ]
-            };
-      myChart.setOption(option)
-      window.addEventListener("resize", function() {
-        myChart.resize()
-      })
-    }
-    this.$on('hook:destroyed',()=>{
-        window.removeEventListener("resize", function() {
-        myChart.resize();
-      });
-      })
-    }
+    get_start_and_end(days=60) {
+      let today = Date();
+      start = today
+      console.log(today)
+    },
+    getEchartData(index_quote) {
+      const chart = this.$refs.chart
+      
+      if (chart) {
+        const myChart = this.$echarts.init(chart)
+        const option = {
+                xAxis: {
+                  type: 'category',
+                  data: index_quote.data["000001.SH"].date
+                },
+                yAxis: {
+                  type: 'value'
+                },
+                series: [
+                  {
+                    data: index_quote.data["000001.SH"].value,
+                    type: 'line',
+                    smooth: true
+                  }
+                ]
+              };
+        myChart.setOption(option)
+        window.addEventListener("resize", function() {
+          myChart.resize()
+        })
+      }
+      this.$on('hook:destroyed',()=>{
+          window.removeEventListener("resize", function() {
+          myChart.resize();
+        });
+        })
+      }
   }
 }
 </script>
