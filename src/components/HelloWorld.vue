@@ -29,14 +29,16 @@ export default {
     msg: String
   },
   mounted(){
-    this.get_start_and_end();
-    getFactor("factor_index_quote_close", "000001.SH", "2021-11-01", "2021-12-01").then(this.getEchartData)
+    let dates = this.get_start_and_end();
+    let start = dates[0]
+    let end = dates[1]
+    getFactor("factor_index_quote_close", "000001.SH", start, end).then(this.getEchartData);
   },
   methods: {
-    get_start_and_end(days=60) {
-      let today = Date();
-      start = today
-      console.log(today)
+    get_start_and_end(days=180) {
+      let start = this.$moment().subtract(days, 'days').format('YYYY-MM-DD');
+      let end = this.$moment().format('YYYY-MM-DD');
+      return [start, end]
     },
     getEchartData(index_quote) {
       const chart = this.$refs.chart
@@ -49,7 +51,9 @@ export default {
                   data: index_quote.data["000001.SH"].date
                 },
                 yAxis: {
-                  type: 'value'
+                  type: 'value',
+                  min: function(value) {return value.min - 100;},
+                  max: function(value) {return value.max + 100;},
                 },
                 series: [
                   {
