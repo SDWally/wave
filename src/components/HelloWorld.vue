@@ -3,20 +3,20 @@
     <h1>{{ msg }}</h1>
     <h3>今日最佳股票</h3>
     <ul>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-babel" target="_blank" rel="noopener">德赛电池</a></li>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-eslint" target="_blank" rel="noopener">宁德时代</a></li>
-            <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-eslint" target="_blank" rel="noopener">通策医疗</a></li>
+      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-babel" target="_blank" rel="noopener">恒瑞医药</a></li>
+      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-eslint" target="_blank" rel="noopener">中国平安</a></li>
+            <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-eslint" target="_blank" rel="noopener">比亚迪</a></li>
     </ul>
     <h3>未来五日大盘预测</h3>
     <div ref="chart" style="width:100%;height:376px"></div>
     <h3>未来一周行业预测</h3>
-    <ul>
-      <li><a href="https://router.vuejs.org" target="_blank" rel="noopener">vue-router</a></li>
-      <li><a href="https://vuex.vuejs.org" target="_blank" rel="noopener">vuex</a></li>
-      <li><a href="https://github.com/vuejs/vue-devtools#vue-devtools" target="_blank" rel="noopener">vue-devtools</a></li>
-      <li><a href="https://vue-loader.vuejs.org" target="_blank" rel="noopener">vue-loader</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">awesome-vue</a></li>
-    </ul>
+    <div class="flex-container">
+      <div v-for="item in a" v-bind:key="item"  class="flex-item">
+        {{item}}
+      </div>
+      <div class="flex-item">flex item 2</div>
+      <div class="flex-item">flex item 3</div>  
+    </div>
   </div>
 </template>
 
@@ -25,6 +25,9 @@ import { getFactor } from '@/api/data'
 
 export default {
   name: 'HelloWorld',
+  data: {
+    a: [1, 2, 3]
+  },
   props: {
     msg: String
   },
@@ -208,5 +211,21 @@ li {
 }
 a {
   color: #42b983;
+}
+.flex-container {
+    display: -webkit-flex;
+    display: flex;
+    /* width: 400px; */
+    height: 250px;
+    /* background-color: lightgrey; */
+    justify-content: center;
+    align-items: center;
+}
+
+.flex-item {
+    background-color: 'rgba(0, 0, 205, 0.8)';
+    width: 300px;
+    height: 200px;
+    margin: 10px;
 }
 </style>
