@@ -3,19 +3,16 @@
     <h1>{{ msg }}</h1>
     <h3>今日最佳股票</h3>
     <ul>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-babel" target="_blank" rel="noopener">恒瑞医药</a></li>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-eslint" target="_blank" rel="noopener">中国平安</a></li>
-            <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-eslint" target="_blank" rel="noopener">比亚迪</a></li>
+      <li><a href="https://xueqiu.com/S/SH600276" target="_blank" rel="noopener">恒瑞医药</a></li>
+      <li><a href="https://xueqiu.com/S/SH601318" target="_blank" rel="noopener">中国平安</a></li>
+      <li><a href="https://xueqiu.com/S/SZ002594" target="_blank" rel="noopener">比亚迪</a></li>
     </ul>
     <h3>未来五日大盘预测</h3>
     <div ref="chart" style="width:100%;height:376px"></div>
     <h3>未来一周行业预测</h3>
+    <div v-for="item in industry" :key="item" :ref="item" class="flex-item"></div>
     <div class="flex-container">
-      <div v-for="item in a" v-bind:key="item"  class="flex-item">
-        {{item}}
-      </div>
-      <div class="flex-item">flex item 2</div>
-      <div class="flex-item">flex item 3</div>  
+
     </div>
   </div>
 </template>
@@ -25,17 +22,20 @@ import { getFactor } from '@/api/data'
 
 export default {
   name: 'HelloWorld',
-  data: {
-    a: [1, 2, 3]
+  data() {
+    return { 
+      industry: ["bank", "car"] 
+      }
   },
   props: {
-    msg: String
+    msg: String,
   },
   mounted(){
     let dates = this.get_start_and_end();
     let start = dates[0]
     let end = dates[1]
     getFactor("factor_index_quote_close", "000001.SH", start, end).then(this.getEchartData);
+    getFactor("factor_index_quote_close", "000001.SH", start, end).then(this.getEchartIndustry);
   },
   methods: {
     get_start_and_end(days=180) {
@@ -159,8 +159,10 @@ export default {
         });
         })
       },
-      getEchartData2(index_quote) {
-        const chart = this.$refs.chart
+      getEchartIndustry(index_quote) {
+        for (let ind in this.industry) {
+        const chart = this.$refs[this.industry[ind]]
+        console.log(chart)
         if (chart) {
           const myChart = this.$echarts.init(chart)
           const option = {
@@ -192,6 +194,7 @@ export default {
           });
           })
       }
+    }
   }
 }
 </script>
