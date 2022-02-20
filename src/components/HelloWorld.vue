@@ -11,7 +11,7 @@
     <div ref="chart" style="width:100%;height:376px"></div>
     <h3>未来五日行业预测</h3>
     <div class="flex-container">
-          <div v-for="item in industry" :key="item" :ref="item" class="flex-item"></div>
+          <div v-for="item in industry" :key="item" :ref="item.name" class="flex-item"></div>
     </div>
   </div>
 </template>
@@ -151,7 +151,7 @@ export default {
         let x_data = index_quote.data["000001.SH"].date
         let date_num = x_data.length
         for (let ind in this.industry) {
-        const chart = this.$refs[this.industry[ind]][0]
+        const chart = this.$refs[this.industry.name]
         console.log(chart)
         if (chart) {
           const myChart = this.$echarts.init(chart)
