@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <!-- <img alt="Vue logo" src="../assets/logo.png"> -->
-    <HelloWorld msg="樱盘-您的股票投资，策略最佳伴侣！"/>
+    <HelloWorld msg="樱盘-您的投资最佳伴侣！"/>
   </div>
 </template>
 
