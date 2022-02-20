@@ -151,9 +151,9 @@ export default {
         let x_data = index_quote.data["000001.SH"].date
         let date_num = x_data.length
         for (let ind in this.industry) {
-          console.log()
+          // console.log()
           const chart = this.$refs[this.industry[ind].name][0]
-          console.log(chart)
+          // console.log(chart)
           if (chart) {
             const myChart = this.$echarts.init(chart)
             const option = {
