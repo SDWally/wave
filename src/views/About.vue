@@ -1,5 +1,6 @@
 <template>
   <div class="about">
-    <h1>This is an about page</h1>
+    <p>这是一个有关投资小工具的项目，展示作者的一些常用投资工具和参考内容。本网站仅供个人学习交流，请勿用于商业行为，内容均不构成投资建议。</p>
+    <p>炒股有风险，投资请谨慎.</p>
   </div>
 </template>

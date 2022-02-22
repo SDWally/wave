@@ -1,18 +1,25 @@
 <template>
   <div class="home">
     <!-- <img alt="Vue logo" src="../assets/logo.png"> -->
-    <HelloWorld msg="樱盘-您的投资最佳伴侣！"/>
+    <h3>樱盘-您的投资最佳伴侣！</h3>
+    <Stock/>
+    <Index/>
+    <Industry/>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/index.vue'
+import Stock from '@/components/stock.vue'
+import Index from '@/components/index.vue'
+import Industry from '@/components/industry.vue'
 
 export default {
   name: 'Home',
   components: {
-    HelloWorld
+    Index,
+    Industry,
+    Stock
   }
 }
 </script>
