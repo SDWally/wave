@@ -31,7 +31,6 @@ export default {
   },
   mounted(){
     let dates = this.get_start_and_end();
-    let dates_industry = this.get_start_and_end(90)
     getFactor("factor_index_quote_close", "000001.SH", dates[0], dates[1]).then(this.getEchartData);
   },
   methods: {
@@ -127,12 +126,15 @@ export default {
         window.addEventListener("resize", function() {
           myChart.resize()
         })
-      }
-      this.$on('hook:destroyed',()=>{
+        this.$on('hook:destroyed',()=>{
           window.removeEventListener("resize", function() {
+            // if (!this.chart) {
+            //   return
+            // }
           myChart.resize();
         });
         })
+      }
       }
   }
 }

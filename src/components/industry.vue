@@ -30,7 +30,6 @@ export default {
       }
   },
   props: {
-    msg: String,
   },
   mounted(){
     let dates_industry = this.get_start_and_end(90)
@@ -126,16 +125,16 @@ export default {
                 }
               ]
     };
-          myChart.setOption(option)
-          window.addEventListener("resize", function() {
-            myChart.resize()
-          })
+            myChart.setOption(option)
+            window.addEventListener("resize", function() {
+                myChart.resize()
+            })
+            this.$on('hook:destroyed',()=>{
+                window.removeEventListener("resize", function() {
+                myChart.resize();
+            });
+            })
         }
-        this.$on('hook:destroyed',()=>{
-            window.removeEventListener("resize", function() {
-            myChart.resize();
-          });
-          })
     }}
   }
 }
