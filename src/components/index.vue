@@ -33,7 +33,6 @@ export default {
     let dates = this.get_start_and_end();
     let dates_industry = this.get_start_and_end(90)
     getFactor("factor_index_quote_close", "000001.SH", dates[0], dates[1]).then(this.getEchartData);
-    getFactor("factor_index_quote_close", "000001.SH", dates_industry[0], dates_industry[1]).then(this.getEchartIndustry);
   },
   methods: {
     get_start_and_end(days=180) {
@@ -134,102 +133,7 @@ export default {
           myChart.resize();
         });
         })
-      },
-      getEchartIndustry(index_quote) {
-        let x_data = index_quote.data["000001.SH"].date
-        let date_num = x_data.length
-        for (let ind in this.industry) {
-          // console.log()
-          const chart = this.$refs[this.industry[ind].name][0]
-          // console.log(chart)
-          if (chart) {
-            const myChart = this.$echarts.init(chart)
-            const option = {
-              title: {
-                text: this.industry[ind].name,
-                subtext: '最新趋势图'
-              },
-              tooltip: {
-                trigger: 'axis',
-                axisPointer: {
-                  type: 'cross'
-                }
-              },
-              toolbox: {
-                show: true,
-                feature: {
-                  saveAsImage: {}
-                }
-              },
-              xAxis: {
-                type: 'category',
-                boundaryGap: false,
-                // prettier-ignore
-                data: index_quote.data["000001.SH"].date
-              },
-              yAxis: {
-                type: 'value',
-                min: function(value) {return value.min - 100;},
-                max: function(value) {return value.max + 100;},
-                axisLabel: {
-                  formatter: '{value} '
-                },
-                axisPointer: {
-                  snap: true
-                }
-              },
-              visualMap: {
-                show: false,
-                dimension: 0,
-                pieces: [
-                  {
-                    lte: date_num - 6,
-                    color: 'green'
-                  },
-                  {
-                    gt: date_num - 6,
-                    lte: 10000,
-                    color: 'rgba(30, 144, 255, 0.9)'
-                  },
-                ]
-              },
-              series: [
-                {
-                  name: '收盘价',
-                  type: 'line',
-                  smooth: true,
-                  // prettier-ignore
-                  data: index_quote.data["000001.SH"].value,
-                  markArea: {
-                    itemStyle: {
-                      color: 'rgba(135, 206, 235, 0.4)'
-                    },
-                    data: [
-                      [
-                        {
-                          name: '预测区间',
-                          xAxis: x_data[date_num-6]
-                        },
-                        {
-                          xAxis: x_data[date_num-1]
-                        }
-                      ],
-                    ]
-                  }
-                }
-              ]
-    };
-          myChart.setOption(option)
-          window.addEventListener("resize", function() {
-            myChart.resize()
-          })
-        }
-        this.$on('hook:destroyed',()=>{
-            window.removeEventListener("resize", function() {
-            myChart.resize();
-          });
-          })
-    }}
+      }
   }
 }
 </script>
