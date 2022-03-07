@@ -5,6 +5,7 @@
       <router-link to="/stock">Stock</router-link> | 
       <router-link to="/index">Index</router-link> | 
       <router-link to="/industry">Industry</router-link> |
+      <router-link to="/redirect">Dev</router-link> |
       <router-link to="/about">About</router-link>
     </div>
     <router-view/>
