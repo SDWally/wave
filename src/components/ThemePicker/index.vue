@@ -26,7 +26,8 @@ export default {
   watch: {
     defaultTheme: {
       handler: function(val, oldVal) {
-        this.theme = val
+        this.theme = val;
+        console.debug(oldVal)
       },
       immediate: true
     },
