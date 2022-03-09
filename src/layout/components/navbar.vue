@@ -3,7 +3,13 @@
     <!-- <hamburger id="hamburger-container" :is-active="sidebar.opened" class="hamburger-container" @toggleClick="toggleSideBar" /> -->
 
     <!-- <breadcrumb id="breadcrumb-container" class="breadcrumb-container" /> -->
-
+    <div id="nav">
+      <router-link to="/">推荐</router-link> | 
+      <router-link to="/stock">股票</router-link> | 
+      <router-link to="/index">指数</router-link> | 
+      <router-link to="/industry">行业</router-link> |
+      <router-link to="/redirect">发现</router-link>
+    </div>
     <div class="right-menu">
       <template v-if="device!=='mobile'">
         <!-- <search id="header-search" class="right-menu-item" /> -->
@@ -26,11 +32,12 @@
         </div>
         <el-dropdown-menu slot="dropdown">
           <router-link to="/profile/index">
-            <el-dropdown-item>Profile</el-dropdown-item>
+            <el-dropdown-item>个人信息</el-dropdown-item>
           </router-link>
           <router-link to="/">
-            <el-dropdown-item>Home</el-dropdown-item>
+            <el-dropdown-item>主页</el-dropdown-item>
           </router-link>
+          <router-link to="/about"><el-dropdown-item>关于</el-dropdown-item></router-link>
           <!-- <a target="_blank" href="https://github.com/PanJiaChen/vue-element-admin/">
             <el-dropdown-item>Github</el-dropdown-item>
           </a>
@@ -38,7 +45,7 @@
             <el-dropdown-item>Docs</el-dropdown-item>
           </a> -->
           <el-dropdown-item divided @click.native="logout">
-            <span style="display:block;">Log Out</span>
+            <span style="display:block;">退出</span>
           </el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>
@@ -84,6 +91,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+#nav a {
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+#nav a.router-link-exact-active {
+  color: #42b983;
+}
+
 .navbar {
   height: 50px;
   overflow: hidden;

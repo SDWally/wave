@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
 
 Vue.use(VueRouter)
 
@@ -11,11 +10,16 @@ import Layout from '@/layout'
 const routes = [
   {
     path: '/',
-    name: 'Home',
-    component: Home,
-    meta: {
-      title: '樱盘'
-    }
+    component: Layout,
+    redirect: '/home',
+    children: [
+      {
+        path: 'home',
+        component: () => import('@/views/home/index'),
+        name: 'Home',
+        meta: { title: 'Home', icon: 'dashboard', affix: true }
+      }
+    ],
   },
   {
     path: '/stock',
@@ -23,7 +27,7 @@ const routes = [
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/Stock.vue')
+    component: () => import(/* webpackChunkName: "about" */ '../views/stock/index.vue')
   },
   {
     path: '/index',
@@ -31,7 +35,7 @@ const routes = [
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/Index.vue')
+    component: () => import(/* webpackChunkName: "about" */ '../views/index/index.vue')
   },
   {
     path: '/industry',
@@ -39,7 +43,7 @@ const routes = [
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/Industry.vue')
+    component: () => import(/* webpackChunkName: "about" */ '../views/industry/index.vue')
   },
   {
     path: '/about',
@@ -51,12 +55,15 @@ const routes = [
   },
   {
     path: '/redirect',
-    // name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: Layout
-  }
+    component: Layout,
+    hidden: true,
+    children: [
+      {
+        path: '/redirect/:path(.*)',
+        component: () => import('@/views/redirect/index')
+      }
+    ]
+}
 ]
 
 const router = new VueRouter({
