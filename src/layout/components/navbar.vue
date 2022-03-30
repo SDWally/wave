@@ -3,12 +3,16 @@
     <!-- <hamburger id="hamburger-container" :is-active="sidebar.opened" class="hamburger-container" @toggleClick="toggleSideBar" /> -->
 
     <!-- <breadcrumb id="breadcrumb-container" class="breadcrumb-container" /> -->
-    <div id="nav">
-      <router-link to="/">推荐</router-link> | 
-      <router-link to="/stock">股票</router-link> | 
-      <router-link to="/index">指数</router-link> | 
-      <router-link to="/industry">行业</router-link> |
-      <router-link to="/redirect">发现</router-link>
+    <!-- <div class="nav"> -->
+    <div class="left-menu">
+      <img src="http://www.wallyi.com/img/1.jpg" class="left-logo">
+    </div>
+    <div class="mid-menu">
+    <router-link to="/">推荐</router-link> | 
+    <router-link to="/stock">股票</router-link> | 
+    <router-link to="/index">指数</router-link> | 
+    <router-link to="/industry">行业</router-link> |
+    <router-link to="/redirect">发现</router-link>
     </div>
     <div class="right-menu">
       <template v-if="device!=='mobile'">
@@ -50,7 +54,8 @@
         </el-dropdown-menu>
       </el-dropdown>
     </div>
-  </div>
+    </div>
+  <!-- </div> -->
 </template>
 
 <script>
@@ -91,12 +96,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-#nav a {
+.nav a {
   font-weight: bold;
   color: #2c3e50;
 }
 
-#nav a.router-link-exact-active {
+.nav a.router-link-exact-active {
   color: #42b983;
 }
 
@@ -128,8 +133,27 @@ export default {
     display: inline-block;
     vertical-align: top;
   }
-
+  .left-menu {
+      position: relative;
+      float: left;
+    .left-logo {
+      margin-top: 5px;
+      cursor: pointer;
+      width: 40px;
+      height: 40px;
+      border-radius:100%;
+    }
+  }
+  .mid-menu {
+    // display: inline;
+    // width: 20%;
+    // height: 100%;
+    float: left;
+    padding: 8px;
+    padding-left: 50px;
+  }
   .right-menu {
+    // display: inline;
     float: right;
     height: 100%;
     line-height: 50px;
@@ -167,7 +191,7 @@ export default {
           cursor: pointer;
           width: 40px;
           height: 40px;
-          border-radius: 10px;
+          border-radius:100%;
         }
 
         .el-icon-caret-bottom {
