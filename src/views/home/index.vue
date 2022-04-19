@@ -1,7 +1,6 @@
 <template>
   <div class="home">
     <!-- <img alt="Vue logo" src="../assets/logo.png"> -->
-    <h3>樱盘-您的投资最佳伴侣！</h3>
     <Stock/>
     <Index/>
     <Industry/>
