@@ -23,35 +23,55 @@ const routes = [
   },
   {
     path: '/stock',
-    name: 'Stock',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/stock/index.vue')
+    component: Layout,
+    redirect: '/stock/index',
+    children: [
+      {
+        path: 'index',
+        component: () => import('@/views/stock/index'),
+        name: 'Stock',
+        meta: { title: 'Stock', icon: 'dashboard', affix: true }
+      }
+    ],
   },
   {
     path: '/index',
-    name: 'Index',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/index/index.vue')
+    component: Layout,
+    redirect: '/index/index',
+    children: [
+      {
+        path: 'index',
+        component: () => import('@/views/index/index'),
+        name: 'Index',
+        meta: { title: 'Index', icon: 'dashboard', affix: true }
+      }
+    ],
   },
   {
     path: '/industry',
-    name: 'Industry',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/industry/index.vue')
+    component: Layout,
+    redirect: '/industry/index',
+    children: [
+      {
+        path: 'index',
+        component: () => import('@/views/industry/index'),
+        name: 'Industry',
+        meta: { title: 'Industry', icon: 'dashboard', affix: true }
+      }
+    ],
   },
   {
     path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+    component: Layout,
+    // redirect: '/about/index',
+    children: [
+      {
+        path: 'index',
+        component: () => import('@/views/About'),
+        name: 'About',
+        meta: { title: 'About', icon: 'dashboard', affix: true }
+      }
+    ],
   },
   {
     path: '/redirect',

@@ -1,6 +1,5 @@
 <template>
   <div class="index">
-      <!-- <Layout/> -->
       <Index/>
   </div>
 </template>
@@ -8,13 +7,11 @@
 <script>
 // @ is an alias to /src
 import Index from '@/components/index.vue'
-// import Layout from '@/layout'
 
 export default {
   name: 'Home',
   components: {
-    Index,
-    Layout
+    Index
   }
 }
 </script>
