@@ -8,6 +8,7 @@ import Cookies from 'js-cookie'
 import Element from 'element-ui'
 import enLang from 'element-ui/lib/locale/lang/en'// 如果使用中文语言包请默认支持，无需额外引入，请删除该依赖
 import './icons' // icon
+import './permission' // permission control
 
 Vue.prototype.$echarts = echarts
 Vue.prototype.$moment = moment

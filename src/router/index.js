@@ -83,7 +83,12 @@ const routes = [
         component: () => import('@/views/redirect/index')
       }
     ]
-}
+  },
+  {
+    path: '/login',
+    component: () => import('@/views/login/index'),
+    hidden: true
+  },
 ]
 
 const router = new VueRouter({

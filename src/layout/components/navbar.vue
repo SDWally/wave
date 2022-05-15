@@ -5,7 +5,7 @@
     <!-- <breadcrumb id="breadcrumb-container" class="breadcrumb-container" /> -->
     <!-- <div class="nav"> -->
     <div class="left-menu">
-      <img src="http://www.wallyi.com/img/1.jpg" class="left-logo">
+      <img src="http://www.wallyi.com/img/logo.jpg" class="left-logo">
     </div>
     <div class="mid-menu">
     <router-link to="/">推荐</router-link> | 
@@ -109,7 +109,7 @@ export default {
   height: 50px;
   overflow: hidden;
   position: relative;
-  background: #fff;
+  background: rgb(55, 55, 59);
   box-shadow: 0 1px 4px rgba(0,21,41,.08);
 
   .hamburger-container {
@@ -137,6 +137,8 @@ export default {
       position: relative;
       float: left;
     .left-logo {
+      // border-style:solid;
+      // border-color:black;
       margin-top: 5px;
       cursor: pointer;
       width: 40px;
