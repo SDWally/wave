@@ -1,13 +1,13 @@
 import Vue from 'vue'
-import VueRouter from 'vue-router'
+import Router from 'vue-router'
 
-Vue.use(VueRouter)
+Vue.use(Router)
 
 /* Layout */
 import Layout from '@/layout'
 
 
-const routes = [
+export const constantRoutes = [
   {
     path: '/',
     component: Layout,
@@ -153,8 +153,19 @@ export const asyncRoutes = [
 ]
 
 
-const router = new VueRouter({
-  routes
+const createRouter = () => new Router({
+  // mode: 'history', // require service support
+  scrollBehavior: () => ({ y: 0 }),
+  routes: constantRoutes
 })
+
+const router = createRouter()
+
+
+export function resetRouter() {
+  const newRouter = createRouter()
+  router.matcher = newRouter.matcher // reset router
+}
+
 
 export default router
