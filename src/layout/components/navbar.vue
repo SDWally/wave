@@ -38,10 +38,10 @@
           <router-link to="/profile/index">
             <el-dropdown-item>个人信息</el-dropdown-item>
           </router-link>
-          <router-link to="/">
-            <el-dropdown-item>主页</el-dropdown-item>
-          </router-link>
-          <router-link to="/about"><el-dropdown-item>关于</el-dropdown-item></router-link>
+          <!-- <router-link to="/">
+            <el-dropdown-item>主页</el-dropdown-item> -->
+          <!-- </router-link> -->
+          <!-- <router-link to="/about"><el-dropdown-item>关于</el-dropdown-item></router-link> -->
           <!-- <a target="_blank" href="https://github.com/PanJiaChen/vue-element-admin/">
             <el-dropdown-item>Github</el-dropdown-item>
           </a>
