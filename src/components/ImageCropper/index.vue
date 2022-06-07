@@ -480,6 +480,7 @@ export default {
     setSourceImg(file) {
       const fr = new FileReader()
       fr.onload = e => {
+        console.debug(e)
         this.sourceImgUrl = fr.result
         this.startCrop()
       }
@@ -592,6 +593,7 @@ export default {
     },
     // 按钮按下开始向右旋转
     startRotateRight(e) {
+      console.debug(e)
       const { scale } = this
       scale.rotateRight = true
       const rotate = () => {
@@ -607,6 +609,7 @@ export default {
     },
     // 按钮按下开始向左旋转
     startRotateLeft(e) {
+      console.debug(e)
       const { scale } = this
       scale.rotateLeft = true
       const rotate = () => {
@@ -628,6 +631,7 @@ export default {
     },
     // 按钮按下开始放大
     startZoomAdd(e) {
+      console.debug(e)
       const { scale } = this
       scale.zoomAddOn = true
       const zoom = () => {
@@ -643,10 +647,12 @@ export default {
     },
     // 按钮松开或移开取消放大
     endZoomAdd(e) {
+      console.debug(e)
       this.scale.zoomAddOn = false
     },
     // 按钮按下开始缩小
     startZoomSub(e) {
+      console.debug(e)
       const { scale } = this
       scale.zoomSubOn = true
       const zoom = () => {
@@ -662,6 +668,7 @@ export default {
     },
     // 按钮松开或移开取消缩小
     endZoomSub(e) {
+      console.debug(e)
       const { scale } = this
       scale.zoomSubOn = false
     },
