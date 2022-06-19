@@ -20,7 +20,7 @@
           :key="imagecropperKey"
           :width="160"
           :height="160"
-          url="http://localhost:5000/user/avatar_upload"
+          url="http://invest.wallyi.com/prod-api/user/avatar_upload"
           lang-type="en"
           @close="close"
           @crop-upload-success="cropSuccess"
