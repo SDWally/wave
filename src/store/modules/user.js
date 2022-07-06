@@ -29,6 +29,9 @@ const mutations = {
 }
 
 const actions = {
+  setAvatar({commit}, avatar) {
+     commit('SET_AVATAR', avatar)
+  },
   // user login
   login({ commit }, userInfo) {
     const { username, password } = userInfo

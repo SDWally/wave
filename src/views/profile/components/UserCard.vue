@@ -19,7 +19,7 @@
           v-show="imagecropperShow"
           :key="imagecropperKey"
           :width="160"
-          :height="160"
+          :height="160" 
           url="http://invest.wallyi.com/prod-api/user/avatar_upload"
           lang-type="en"
           @close="close"
@@ -69,6 +69,7 @@
 <script>
 import PanThumb from '@/components/PanThumb'
 import ImageCropper from '@/components/ImageCropper'
+import { mapGetters } from 'vuex'
 
 export default {
   components: { ImageCropper, PanThumb},
@@ -84,10 +85,10 @@ export default {
       type: Object,
       default: () => {
         return {
-          name: '',
-          email: '',
-          avatar: this.image,
-          role: ''
+          name: mapGetters.name,
+          email: mapGetters.email,
+          avatar: mapGetters.avatar,
+          role: mapGetters.role
         }
       }
     }
@@ -97,6 +98,7 @@ export default {
       this.imagecropperShow = false
       this.imagecropperKey = this.imagecropperKey + 1
       this.image = resData.files.avatar
+      this.$store.dispatch('user/setAvatar', resData.files.avatar)
     },
     close() {
       this.imagecropperShow = false
