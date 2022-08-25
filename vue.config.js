@@ -57,7 +57,7 @@ module.exports = {
             // },
             '/dev-api': {
                 /* 目标代理服务器地址 */
-                target: 'http://localhost:8888/',
+                target: 'http://localhost:5000/',
                 /* 允许跨域 */
                 changeOrigin: true,
                 pathRewrite: {
